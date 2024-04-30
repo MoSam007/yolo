@@ -6,9 +6,9 @@ LABEL maintainer="Sam Momanyi"
 
 WORKDIR /client/app
 
-COPY /client/package*.json ./
+COPY /package*.json ./
 RUN npm install
-COPY . /client/app/.
+COPY . .
 RUN npm run build
 
 # Stage 2: Serve the client application using Nginx
