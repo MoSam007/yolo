@@ -59,10 +59,10 @@ For easy identification and versioning of Docker images, we followed the convent
 ## Dockerhub images
 
 ![Dockerhub Image](images/Screenshot1.png)
-This is the backend image pushed to docker hub with verion `1.0 :tag`.
+This is the backend image pushed to docker hub with version `1.0 :tag`.
 
 ![Dockerhub Image](images/Screenshot2.png)
-This is the frontend image pushed to docker hub with verion `latest :tag`
+This is the frontend image pushed to docker hub with version `latest :tag`
 
 
 
