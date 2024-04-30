@@ -3,17 +3,17 @@ FROM node:14 as backend-builder
 
 WORKDIR /backend/app
 
-COPY /backend/package*.json ./
+COPY /package*.json ./
 RUN npm install
-COPY . .
+COPY . /backend/app/.
 RUN npm run build
 
 # Stage 2: Final image with only necessary files
 FROM node:14-alpine
 
-WORKDIR /app
+WORKDIR /backend/app
 
-COPY --from=backend-builder //app .
+COPY --from=backend-builder /backend/app .
 
 EXPOSE 3000
 
