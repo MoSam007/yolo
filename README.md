@@ -54,4 +54,15 @@ If the applications fail to run successfully, we would review Docker logs for an
 
 ## Docker Image Tag Naming Standards
 
-For easy identification and versioning of Docker images, we followed the convention of `<application_name>:tag`. We ensured that each Docker image is tagged with a descriptive name, such as `frontend:latest`, `backend:1.0`, and `mongodb:4.4`, to facilitate easy management and deployment.
+For easy identification and versioning of Docker images, we followed the convention of `<application_name>:tag`. We ensured that each Docker image is tagged with a descriptive name, such as `frontend:latest`, and `backend:1.0` to facilitate easy management and deployment.
+
+## Dockerhub images
+
+![Dockerhub Image](images/Screenshot1.png)
+This is the backend image pushed to docker hub with verion `1.0 :tag`.
+
+![Dockerhub Image](images/Screenshot2.png)
+This is the frontend image pushed to docker hub with verion `latest :tag`
+
+
+
