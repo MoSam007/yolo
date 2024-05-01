@@ -1,23 +1,27 @@
-version: '3.0'
+version: '3.1'
 
 services:
   frontend:
-    build:
-      context: .
-      dockerfile: client/Dockerfile
+    image: nysam/frontend:latest
     ports:
-      - "80:80"
+      - "8080:80"
 
   backend:
-    build:
-      context: .
-      dockerfile: backend/Dockerfile
-    ports:
-      - "3000:3000"
-    depends_on:
-      - mongodb
+      image: nysam/backend:1.0
+      ports:
+        - "3000:3000"
+      depends_on:
+        - mongodb
 
   mongodb:
     image: mongo
     ports:
       - "27017:27017"
+  
+  mongo-express:
+    image: mongo-express
+    ports:
+      - "8081:8000"
+    
+
+

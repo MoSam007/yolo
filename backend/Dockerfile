@@ -6,7 +6,7 @@ WORKDIR /backend/app
 COPY /package*.json ./
 RUN npm install
 COPY . .
-
+RUN npm run build
 
 # Stage 2: Final image with only necessary files
 FROM node:14-alpine
