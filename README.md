@@ -5,9 +5,9 @@ Make sure that you have the following installed:
 - [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/) and start the mongodb service with `sudo service mongod start`
 - Navigate to the Client Folder 
  `cd client`
-- Run the folllowing command to install the dependencies 
+- Run the following command to install the dependencies 
  `npm install`
-- Run the folllowing to start the app
+- Run the following to start the app
  `npm start`
 - Open a new terminal and run the same commands in the backend folder
  `cd ../backend`
@@ -50,7 +50,7 @@ We followed a typical Git workflow for developing and deploying the application.
 
 ## Debugging Measures
 
-If the applications fail to run successfully, we would review Docker logs for any error messages and examine the Dockerfiles and Docker Compose file for misconfigurations. Additionally, we would check for any issues related to dependencies, environment variables, or networking configurations.
+If the applications fail to run successfully, we would review Docker logs using the commands `docker logs <container/image ID>`for any error messages and examine the Dockerfiles and Docker Compose file for misconfigurations. Additionally, we would check for any issues related to dependencies, environment variables, or networking configurations.
 
 ## Docker Image Tag Naming Standards
 
