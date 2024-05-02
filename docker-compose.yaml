@@ -7,22 +7,33 @@ services:
       - "8080:80"
 
   backend:
-      image: nysam/backend:1.0
-      ports:
-        - "3000:3000"
-      depends_on:
-        - mongodb
-        - mongo-express
+    image: nysam/backend:1.0
+    ports:
+      - "3000:3000"
+    depends_on:
+      - "mongodb"
+      - "mongo-express"
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/yolomy  # Update to use service name as hostname
+    volumes:
+      - backend-data:/backend/app/data  # Mount a volume for backend data
 
   mongodb:
     image: mongo
     ports:
       - "27017:27017"
-  
+    volumes:
+      - mongodb-data:/data/db  # Mount a volume for MongoDB data
+
   mongo-express:
     image: mongo-express
     ports:
-      - "8081:8000"
-    
+      - "8081:8081"
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/yolomy
+    depends_on:
+      - "mongodb"
 
-
+volumes:
+  backend-data:
+  mongodb-data:
