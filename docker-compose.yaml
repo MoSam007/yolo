@@ -9,19 +9,24 @@ services:
   backend:
     image: nysam/backend:1.0
     ports:
-      - "3000:3000"
+      - "3000:3000" 
+    environment:
+      - MONGO_DB_USERNAME=${MONGO_ADMIN_USER}
+      - MONGO_DB_PWD=${MONGO_ADMIN_PASS}
+      - MONGODB_URI=mongodb+srv://<auth_credentials>@cluster1.qjvlrbu.mongodb.net/yolo  # Update to use service name as hostname
+    volumes:
+      - backend-data:/backend/app/data  # Mount a volume for backend data
     depends_on:
       - "mongodb"
       - "mongo-express"
-    environment:
-      - MONGODB_URI=mongodb://mongodb:27017/yolomy  # Update to use service name as hostname
-    volumes:
-      - backend-data:/backend/app/data  # Mount a volume for backend data
 
   mongodb:
     image: mongo
     ports:
       - "27017:27017"
+    environment:
+     - MONGO_INITDB_ROOT_USERNAME=${MONGO_ADMIN_USER}
+     - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ADMIN_PASS}
     volumes:
       - mongodb-data:/data/db  # Mount a volume for MongoDB data
 
@@ -30,7 +35,11 @@ services:
     ports:
       - "8081:8081"
     environment:
-      - MONGODB_URI=mongodb://mongodb:27017/yolomy
+      - MONGODB_URI=mongodb+srv://<auth_credentials>@cluster1.qjvlrbu.mongodb.net/yolo
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=${MONGO_ADMIN_USER}
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=${MONGO_ADMIN_PASS}
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+
     depends_on:
       - "mongodb"
 
