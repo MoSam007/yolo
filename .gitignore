@@ -7,7 +7,6 @@
 # .ansible/
 
 # Ignore private keys and sensitive files
-.ssh/
 .vault_pass.txt
 
 # Ignore temporary files
