@@ -1,4 +1,4 @@
-- name: Setup e-commerce application
+- name: Setup Yolo
   hosts: localhost
   become: true
   vars_files:

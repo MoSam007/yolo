@@ -1,0 +1,19 @@
+# Ignore system and editor files
+# .vagrant/
+# .terraform/
+2024-05-17-17-15-25.072-VBoxSVC-5723.log
+2024-05-17-17-15-25.091-VBoxHeadless-6425.log
+
+# Ignore Ansible fact cache
+# .ansible/
+
+# Ignore private keys and sensitive files
+.ssh/
+.vault_pass.txt
+
+# Ignore temporary files
+*.swp
+*~
+
+# Ignore Ansible generated files
+# ansible/roles/*/molecule/
