@@ -1,8 +1,7 @@
 # Ignore system and editor files
 # .vagrant/
 # .terraform/
-2024-05-17-17-15-25.072-VBoxSVC-5723.log
-2024-05-17-17-15-25.091-VBoxHeadless-6425.log
+*.log
 
 # Ignore Ansible fact cache
 # .ansible/
@@ -17,3 +16,11 @@
 
 # Ignore Ansible generated files
 # ansible/roles/*/molecule/
+
+# Ignore Terraform state files
+terraform.tfstate
+terraform.tfstate.backup
+
+# Ignore Ansible retry files
+*.retry
+
