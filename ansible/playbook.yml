@@ -1,0 +1,23 @@
+- name: Setup e-commerce application
+  hosts: all
+  become: yes
+  vars_files:
+    - group_vars/all.yml
+
+  roles:
+    - role: geerlingguy.nginx
+    - role: geerlingguy.docker
+    - role: frontend
+    - role: backend
+    - role: database
+
+  tasks:
+    - name: Clone repository
+      git:
+        repo: 'https://github.com/yolo.git'
+        dest: /var/www/html/client/index.js
+
+    - name: Run Docker containers
+      include_role:
+        name: docker_containers
+
