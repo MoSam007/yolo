@@ -1,5 +1,5 @@
 - name: Setup e-commerce application
-  hosts: all
+  hosts: localhost
   become: true
   vars_files:
     - group_vars/all.yml
