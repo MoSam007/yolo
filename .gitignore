@@ -1,24 +1,42 @@
-# Ignore system and editor files
-# .vagrant/
-# .terraform/
-*.log
+# Ignore Python bytecode
+__pycache__/
+*.py[cod]
 
-# Ignore Ansible fact cache
-# .ansible/
+# Ignore Ansible configuration file if it contains sensitive information
+ansible/ansible.cfg
 
-# Ignore private keys and sensitive files
-.vault_pass.txt
-
-# Ignore temporary files
-*.swp
-*~
-
-# Ignore Ansible generated files
-# ansible/roles/*/molecule/
+# Ignore Vagrant-specific files
+.vagrant/
+*.box
 
 # Ignore Terraform state files
 terraform.tfstate
 terraform.tfstate.backup
+
+# Ignore Terraform variables file if it contains sensitive information
+terraform/terraform.tfvars
+
+# Ignore Terraform generated files
+.terraform/
+crash.log
+*.tfstate
+*.tfstate.*
+*.tfvars
+
+# Ignore local environment files
+.env
+.env.*
+
+# Ignore log files
+*.log
+
+# Ignore GitHub Actions temporary files
+.github/workflows/*.lock
+.github/workflows/*.pyc
+
+# Ignore any other temporary or unnecessary files
+*.swp
+*~
 
 # Ignore Ansible retry files
 *.retry

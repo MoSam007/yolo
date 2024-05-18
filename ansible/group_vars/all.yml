@@ -1,0 +1,23 @@
+General settings
+ansible_python_interpreter: /usr/bin/python3
+
+# Application settings
+app_name: ecommerce_app
+app_repo_url: https://github.com/yolo.git
+app_dest: /var/www/ecommerce
+
+# Nginx settings
+nginx_user: www-data
+nginx_worker_processes: auto
+nginx_conf_path: /etc/nginx/nginx.conf
+
+# Docker settings
+docker_version: "19.03"
+docker_users:
+  - vagrant
+
+# Database settings
+db_host: localhost/27017
+db_name: yolo
+db_user: admin_user
+db_password: secret_password
