@@ -2,9 +2,6 @@
 __pycache__/
 *.py[cod]
 
-# Ignore Ansible configuration file if it contains sensitive information
-ansible/ansible.cfg
-
 # Ignore Vagrant-specific files
 .vagrant/
 *.box
@@ -40,4 +37,8 @@ crash.log
 
 # Ignore Ansible retry files
 *.retry
+
+# Ignore ssh files
+.ssh
+id_rsa
 

@@ -1,0 +1,43 @@
+- name: Setup Yolo
+  hosts: webservers
+  become: true
+  vars_files:
+    - group_vars/all.yml
+
+  roles:
+    - role: test-connectivity
+    - role: update-server
+    - role: nginx-setup
+    - role: geerlingguy.nginx
+    - role: geerlingguy.docker
+    - role: clone-repo
+    - role: frontend
+    - role: backend
+    - role: database
+    - role: docker-containers
+
+  tasks:
+
+    - name: Install apache
+      apt: 
+        name: apache2
+        state: present      
+    
+    - name: Update Server
+      apt:
+        update_cache: true
+
+    - name: Install Apache
+      apt:
+        name: apache2
+        state: present
+
+    # - name: Run Docker containers
+    #   include_role:
+    #     name: docker_containers
+
+  handlers:
+    - name: Restart Apache
+      service:
+        name: apache2
+        state: restarted
