@@ -3,7 +3,7 @@ name: Deploy Yolo
 on:
   push:
     branches:
-      - main
+      - master
       - Stage_two
 
 jobs:
