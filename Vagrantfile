@@ -7,10 +7,9 @@ Vagrant.configure("2") do |config|
   end
   
   config.ssh.insert_key = false
-  
+  config.vm.boot_timeout = 600 
   config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "ansible/playbook.yml"
-    ansible.inventory_path = "ansible/inventory/hosts.yml"
+    ansible.playbook = "playbook.yml"
     ansible.verbose = "vv"
   end
 end
