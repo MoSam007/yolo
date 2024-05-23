@@ -14,7 +14,7 @@ terraform.tfstate.backup
 stage_two/vars.tf
 
 # Ignore Terraform generated files
-.terraform/
+stage_two/.terraform/
 crash.log
 *.tfstate
 *.tfstate.*
