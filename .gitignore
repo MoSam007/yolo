@@ -11,7 +11,7 @@ terraform.tfstate
 terraform.tfstate.backup
 
 # Ignore Terraform variables file if it contains sensitive information
-terraform/terraform.tfvars
+stage_two/vars.tf
 
 # Ignore Terraform generated files
 .terraform/
@@ -41,4 +41,5 @@ crash.log
 # Ignore ssh files
 .ssh
 id_rsa
+
 
