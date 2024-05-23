@@ -5,8 +5,8 @@ provider "aws" {
  
 }
 
-resource "aws_security_group" "server_sg" {
-  name        = "server_sg"
+resource "aws_security_group" "serv_secg" {
+  name        = "serv_secg"
   description = "Security group for the EC2 instances"
 
   ingress {
@@ -45,14 +45,14 @@ resource "aws_security_group" "server_sg" {
   }
 
   tags = {
-    Name = "server_sg"
+    Name = "serv_secg"
   }
 }
 
 
-resource "aws_instance" "server1" {
+resource "aws_instance" "serverA1" {
   ami           = "ami-0cd59ecaf368e5ccf"
-  security_groups = [aws_security_group.server_sg.name]
+  security_groups = [aws_security_group.serv_secg.name]
   instance_type = "t2.micro"
 
   tags = {
@@ -60,9 +60,9 @@ resource "aws_instance" "server1" {
   }
 }
 
-resource "aws_instance" "server1" {
+resource "aws_instance" "serverB2" {
   ami           = "ami-0cd59ecaf368e5ccf"
-  security_groups = [aws_security_group.server_sg.name]
+  security_groups = [aws_security_group.serv_secg.name]
   instance_type = "t2.micro"
 
   tags = {
