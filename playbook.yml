@@ -1,43 +1,27 @@
 - name: Setup Yolo
-  hosts: webservers
+  hosts: all
   become: true
-  vars_files:
-    - group_vars/all.yml
-
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+ 
   roles:
-    - role: test-connectivity
-    - role: update-server
-    - role: nginx-setup
-    - role: geerlingguy.nginx
-    - role: geerlingguy.docker
-    - role: clone-repo
-    - role: frontend
-    - role: backend
-    - role: database
-    - role: docker-containers
+    - test-connectivity 
+    - update-cache
+    - install-docker 
+    - docker_compose_install
+    #- docker_compose_project 
 
   tasks:
+  - name: Copy project files
+    copy:
+      src: .
+      dest: app/
 
-    - name: Install apache
-      apt: 
-        name: apache2
-        state: present      
-    
-    - name: Update Server
-      apt:
-        update_cache: true
+  
+  - name: Run docker-compose command in the app directory
+    command: docker-compose up -d 
+    args:
+      chdir: app/
+    become: true 
 
-    - name: Install Apache
-      apt:
-        name: apache2
-        state: present
 
-    # - name: Run Docker containers
-    #   include_role:
-    #     name: docker_containers
-
-  handlers:
-    - name: Restart Apache
-      service:
-        name: apache2
-        state: restarted
