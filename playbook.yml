@@ -8,8 +8,8 @@
     - test-connectivity 
     - update-cache
     - install-docker 
-    - docker_compose_install
-    #- docker_compose_project 
+    - install-dockercompose
+   
 
   tasks:
   - name: Copy project files
@@ -18,7 +18,7 @@
       dest: app/
 
   
-  - name: Run docker-compose command in the app directory
+  - name: Run docker-compose 
     command: docker-compose up -d 
     args:
       chdir: app/
