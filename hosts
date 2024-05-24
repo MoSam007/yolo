@@ -1,0 +1,4 @@
+webservers 
+ansible_host=127.0.0.1 
+ansible_host=35.175.175.165
+ansible_host=54.234.151.67
