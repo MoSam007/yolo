@@ -5,6 +5,8 @@ Vagrant.configure("2") do |config|
     vb.memory = "1024"
     vb.cpus = 2
   end
+
+  config.vm.network "forwarded_port", guest: 8000, host: 8000
   
   config.ssh.insert_key = false
   config.vm.boot_timeout = 600 

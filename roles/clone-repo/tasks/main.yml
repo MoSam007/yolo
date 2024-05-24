@@ -1,0 +1,8 @@
+---
+# tasks file for roles/clone-repo
+
+- name: Clone Remote Git Repository
+  git:
+    repo: https://github.com/MoSam007/yolo
+    dest: "/home/bigsam/Dev/yolo"
+    version: Stage_two

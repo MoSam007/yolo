@@ -9,6 +9,7 @@
     - update-cache
     - install-docker 
     - install-dockercompose
+    - clone-repo
    
 
   tasks:
