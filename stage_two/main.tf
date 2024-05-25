@@ -73,11 +73,25 @@ resource "aws_instance" "serverB2" {
     Name = "yolos2"
   }
 
-   provisioner "local-exec" {
-    command = "ansible-playbook -i '${self.public_ip},' playbook.yml"
+  provisioner "remote-exec" {
+    inline= [
+        "sudo apt-get update -y",
+        "sudo apt-get install -y python3-pip",
+        "sudo pip3 install ansible"
+    ]
+
+    connection {
+        type        = "ssh"
+        user        = "ubuntu"
+        private_key = file(var.id_rsa)
+        host        = self.public_ip
+    }
   }
 }
 
+output "serverB2_ip" {
+    value = aws_instance.serverB2.public_ip
+}
 
 
 

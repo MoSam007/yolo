@@ -40,5 +40,7 @@ stage_two/*.tfstate
 # Ignore ssh files
 .ssh
 id_rsa
+stage_two/private_key
+
 
 
