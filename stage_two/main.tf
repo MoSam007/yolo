@@ -58,6 +58,10 @@ resource "aws_instance" "serverA1" {
   tags = {
     Name = "yolos1"
   }
+
+  provisioner "local-exec" {
+    command = "ansible-playbook -i '${self.public_ip},' playbook.yml"
+  }
 }
 
 resource "aws_instance" "serverB2" {
@@ -67,6 +71,10 @@ resource "aws_instance" "serverB2" {
 
   tags = {
     Name = "yolos2"
+  }
+
+   provisioner "local-exec" {
+    command = "ansible-playbook -i '${self.public_ip},' playbook.yml"
   }
 }
 
