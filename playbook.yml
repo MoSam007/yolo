@@ -1,27 +1,46 @@
 - name: Setup Yolo
-  hosts: all
+  hosts: webservers
   become: true
   vars:
     ansible_python_interpreter: /usr/bin/python3
- 
+
+  tasks:
+    - name: Ensure /stage_two directory exists
+      file:
+          path: /stage_two
+          state: directory
+    
+    - name: Install Terraform
+      become: true
+      apt:
+        name: terraform
+        state: present
+
+    - name: run terraform
+      command: terraform apply -auto-approve
+      args:
+        chdir: /stage_two
+
+    - name: Get terraform output
+      command: terraform output -json
+      args:
+        chdir: /stage_two
+      register: terraform_output
+
+    - name: set fact for app server IP
+      set_fact:
+        serverB2_ip: "{{ terraform_output.serverB2_ip.value }}"
+
+# - hosts: 
+#     - "{{ serverB2_ip }}"
+#   become: true
+#   vars_files:
+#     - vars/main.yml
+
   roles:
     - test-connectivity 
     - update-cache
     - install-docker 
     - install-dockercompose
-   
-
-  tasks:
-  - name: Copy project files
-    copy:
-      src: .
-      dest: app/
-
-  
-  - name: Run docker-compose 
-    command: docker-compose up -d 
-    args:
-      chdir: app/
-    become: true 
-
-
+    - clone-repo
+    - run-docker-compose
