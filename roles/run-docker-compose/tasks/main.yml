@@ -1,0 +1,10 @@
+---
+# tasks file for roles/run-docker-compose
+
+- name: Run docker-compose 
+  command: docker-compose up -d 
+  args:
+    chdir: app/
+    become: true 
+  tags: compose 
+  

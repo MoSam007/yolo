@@ -3,26 +3,39 @@
   become: true
   vars:
     ansible_python_interpreter: /usr/bin/python3
- 
+
+  tasks:
+    - name: run terraform
+      command: terraform apply -auto-approve
+      args:
+        chdir: /stage_two
+
+    - name: Get terraform output
+      command: terraform output -json
+      args:
+        chdir: /stage_two
+      register: terraform_output
+
+    - name: set fact for app server IP
+      set_fact:
+        app_server_ip: "{{ terraform_output.app_server_ip.value }}"
+
+- hosts: "{{ app_server_ip }}"
+  become: true
+  vars_files:
+    - vars/main.yml
+
   roles:
     - test-connectivity 
     - update-cache
     - install-docker 
     - install-dockercompose
     - clone-repo
+    - run-docker-compose
+
+    
    
 
-  tasks:
-  - name: Copy project files
-    copy:
-      src: .
-      dest: app/
 
-  
-  - name: Run docker-compose 
-    command: docker-compose up -d 
-    args:
-      chdir: app/
-    become: true 
 
 

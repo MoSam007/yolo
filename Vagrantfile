@@ -13,5 +13,9 @@ Vagrant.configure("2") do |config|
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "playbook.yml"
     ansible.verbose = "vv"
+    ansible.inventory_path = "inventory"
+    ansible.extra_vars = {
+      ansible_user: 'vagrant'
+    }
   end
 end
