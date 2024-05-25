@@ -1,0 +1,17 @@
+---
+# tasks file for roles/database
+- name: Set up database container
+  block:
+    - name: Pull database image
+      docker_image:
+        name: mongo
+        source: pull
+      tags: [database]
+
+    - name: Run database container
+      docker_container:
+        name: database
+        image: mongo
+        ports:
+          - "{{ database_port }}:27017"
+  tags: [database]

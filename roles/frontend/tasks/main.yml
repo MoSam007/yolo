@@ -1,0 +1,17 @@
+---
+# tasks file for roles/frontend
+- name: Set up frontend container
+  block:
+    - name: Pull frontend image
+      docker_image:
+        name: nysam/frontend:latest
+        source: pull
+      tags: [frontend]
+
+    - name: Run frontend container
+      docker_container:
+        name: frontend
+        image: nysam/frontend:latest
+        ports:
+          - "{{ frontend_port }}:80"
+  tags: [frontend]

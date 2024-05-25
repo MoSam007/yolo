@@ -3,44 +3,34 @@
   become: true
   vars:
     ansible_python_interpreter: /usr/bin/python3
+    app_source: "https://github.com/MoSam007/yolo.git"
+    frontend_port: 80
+    backend_port: 5000
+    database_port: 27017
 
   tasks:
-    - name: Ensure /stage_two directory exists
-      file:
-          path: /stage_two
-          state: directory
-    
-    - name: Install Terraform
-      become: true
-      apt:
-        name: terraform
-        state: present
+  - name: Include frontend role
+    include_role:
+      name: frontend
+    tags: [frontend]
 
-    - name: run terraform
-      command: terraform apply -auto-approve
-      args:
-        chdir: /stage_two
+  - name: Include backend role
+    include_role:
+      name: backend
+    tags: [backend]
 
-    - name: Get terraform output
-      command: terraform output -json
-      args:
-        chdir: /stage_two
-      register: terraform_output
-
-    - name: set fact for app server IP
-      set_fact:
-        serverB2_ip: "{{ terraform_output.serverB2_ip.value }}"
-
-# - hosts: 
-#     - "{{ serverB2_ip }}"
-#   become: true
-#   vars_files:
-#     - vars/main.yml
+  - name: Include database role
+    include_role:
+      name: database
+    tags: [mongod]
 
   roles:
-    - test-connectivity 
-    - update-cache
-    - install-docker 
-    - install-dockercompose
-    - clone-repo
-    - run-docker-compose
+      - test-connectivity 
+      - update-cache
+      - clone-repo
+      - install-docker 
+      - install-dockercompose
+      - frontend
+      - backend
+      - database
+      - run-docker-compose

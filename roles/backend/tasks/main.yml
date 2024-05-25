@@ -1,0 +1,17 @@
+---
+# tasks file for roles/backend
+- name: Set up backend container
+  block:
+    - name: Pull backend image
+      docker_image:
+        name: nysam/backend:1.0
+        source: pull
+      tags: [backend]
+
+    - name: Run backend container
+      docker_container:
+        name: backend
+        image: nysam/backend:1.0
+        ports:
+          - "{{ backend_port }}:5000"
+  tags: [backend]
