@@ -17,7 +17,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.x'
+        python-version: '3.11'
 
     - name: Install Ansible
       run: |
@@ -34,4 +34,4 @@ jobs:
       run: terraform apply -auto-approve
 
     - name: Run Ansible Playbook
-      run: ansible-playbook ansible/playbook.yml -i 'localhost,' -c local
+      run: ansible-playbook playbook.yml -i 'localhost,' -c local
