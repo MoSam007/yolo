@@ -14,11 +14,10 @@ terraform.tfstate.backup
 stage_two/vars.tf
 
 # Ignore Terraform generated files
-stage_two/.terraform/
+stage_two/.terraform
 crash.log
-*.tfstate
-*.tfstate.*
-*.tfvars
+stage_two/*.tfstate
+
 
 # Ignore local environment files
 .env
@@ -41,4 +40,7 @@ crash.log
 # Ignore ssh files
 .ssh
 id_rsa
+stage_two/private_key
+
+
 
