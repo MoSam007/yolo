@@ -1,2 +1,7 @@
 ---
 # tasks file for roles/clone-repo
+- name: Clone Remote Git Repository
+  git:
+    repo: https://github.com/Jkiruri/yolo
+    dest: "/home/{{ USER }}/{{ WORK_AREA }}/{{ PROJECT_NAME }}"
+    version: Stage_two
