@@ -9,6 +9,11 @@
 
 
   tasks:
+    # - name: Copy project files
+    #   copy:
+    #     src: .
+    #     dest: app/
+
     - name: Include frontend role
       include_role:
         name: frontend
@@ -23,6 +28,8 @@
       include_role:
         name: database
       tags: [mongod]
+    
+  
 
   roles:
     - test-connectivity 
@@ -30,6 +37,9 @@
     - install-docker 
     - install-dockercompose
     - clone-repo
+    - frontend
+    - backend
+    - database
     - run-docker-compose
 
     

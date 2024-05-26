@@ -1,10 +1,44 @@
 ---
 # tasks file for roles/run-docker-compose
+- name: Copy .env file
+  copy:
+    src: .env
+    dest: /home/ubuntu/app/.env
+  become: true
+  tags: compose
 
-- name: Run docker-compose 
+- name: Check if port 27017 is being used
+  shell: "lsof -i :27017 | grep LISTEN"
+  register: port_check
+  ignore_errors: true
+
+- name: Debug port check output
+  debug:
+    var: port_check.stdout
+
+- name: Find PIDs of processes using port 27017
+  shell: lsof -t -i :27017
+  register: pids
+  when: port_check.stdout != ""
+  ignore_errors: true
+
+- name: Kill processes using port 27017
+  shell: kill -9 {{ item }}
+  with_items: "{{ pids.stdout_lines }}"
+  when: pids.stdout_lines is defined and pids.stdout_lines | length > 0
+  ignore_errors: true
+
+- name: Remove previous docker-compose setup
+  command: docker-compose down
+  args:
+    chdir: app/
+  become: true 
+  tags: compose 
+
+- name: Run new docker-compose setup
   command: docker-compose up -d 
   args:
     chdir: app/
-    become: true 
+  become: true 
   tags: compose 
   
