@@ -9,7 +9,7 @@ services:
   backend:
     image: nysam/backend:1.0
     ports:
-      - "3000:3000" 
+      - "5000:5000" 
     environment:
       - MONGO_DB_USERNAME=${MONGO_ADMIN_USER}
       - MONGO_DB_PWD=${MONGO_ADMIN_PASS}
