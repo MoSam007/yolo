@@ -5,7 +5,7 @@ This project demonstrates the deployment of a multi-component application using 
 ## Prerequisites
 
 - Make sure [Kubernetes](https://kubernetes.io/) is installed
-- Make sure [kubectl] (https://kubernetes.io/docs/tasks/tools/install-kubectl/) is configured
+- Make sure [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) is configured
 
 ## Deployment steps
 
