@@ -1,7 +1,3 @@
-
-
-
-```markdown
 # Explanation of Kubernetes Deployment for Application with MongoDB
 
 This document provides an explanation of the Kubernetes deployment for a sample application with MongoDB using Minikube.
