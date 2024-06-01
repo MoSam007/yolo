@@ -34,5 +34,5 @@ kubectl apply -f frontend-service.yml
 ```
 
 5. **Access the application**:
-- Frontend: [Yolo-app](a2cd55b4cfb6d46a2a7f253d8c7476d8-530763216.us-west-2.elb.amazonaws.com)
-- Mongo Express: [Yolodb](aa9b277be2dd64233912349a23347468-1407590778.us-west-2.elb.amazonaws.com)
+- Frontend: [Yolo-app](http://a2cd55b4cfb6d46a2a7f253d8c7476d8-530763216.us-west-2.elb.amazonaws.com/)
+- Mongo Express: [Yolodb](http://aa9b277be2dd64233912349a23347468-1407590778.us-west-2.elb.amazonaws.com)
