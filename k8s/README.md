@@ -21,7 +21,10 @@ This project demonstrates the deployment of a multi-component application using 
 - ` kubectl apply -f frontend-deployment.yml`
 - ` kubectl apply -f frontend-service.yml`
 
+4. **Apply Mongo-Express resources**:
+- `kubectl apply -f mongo-express-deployment.yml`
+- `kubectl apply -f mongo-express-service.yml`
 
-
-
-
+5. **Access the application**:
+- Frontend: 
+- Mongo Express: 
