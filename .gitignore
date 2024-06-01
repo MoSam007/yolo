@@ -42,5 +42,8 @@ stage_two/*.tfstate
 id_rsa
 stage_two/private_key
 
+# AWS CLI setup files
 
-
+AWSCLIV2.pkg
+awscliv2.zip
+aws/
