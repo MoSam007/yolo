@@ -6,6 +6,23 @@ This project demonstrates the deployment of a multi-component application using 
 
 - Make sure [Kubernetes](https://kubernetes.io/) is installed
 - Make sure [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) is configured
+- Make sure the [AWSCLI](https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip) is installed and configured together with [eksctl](https://github.com/weaveworks/eksctl/releases/latest/download/eksctl)
+
+**Steps to download AWS CLI on Linux**
+```markdown
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+aws --version
+```
+**Steps to download eksctl on Linux**
+```markdown
+curl --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" -o "eksctl.tar.gz"
+tar -xzf eksctl.tar.gz
+sudo mv eksctl /usr/local/bin
+eksctl version
+
+```
 
 ## Deployment steps
 
