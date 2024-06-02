@@ -1,6 +1,6 @@
-# Explanation of Kubernetes Deployment for YOlo with MongoDB
+# Explanation of Kubernetes Deployment for Yolo app
 
-This document provides an explanation of the Kubernetes deployment for a sample application with MongoDB using Minikube.
+This document provides an explanation of the Kubernetes deployment for the yolo eommerce app with MongoDB using Minikube and AWS platform.
 
 ## Choice of Kubernetes Objects
 

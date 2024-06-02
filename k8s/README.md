@@ -49,7 +49,26 @@ kubectl apply -f frontend-service.yml
  kubectl apply -f mongo-express-deployment.yml
  kubectl apply -f mongo-express-service.yml
 ```
+5. **Apply Persistent Volume (pv) resources**:
+``` markdown
+kubectl apply -f pv.yml
+```
 
-5. **Access the application**:
+6. **Apply Persistent Volume Claim (pvc)**:
+```markdown
+kubectl apply -f pvc.yml
+```
+## Reason for multiple cofiguration files for each servic
+- **Modularity:** Separate YAML files make it easier to manage and maintain individual components. Each file focuses on a specific part of the application (e.g., frontend, backend, database).
+
+- **Scalability:** With separate YAML files, each service can be scaled independently. For instance, if the backend requires more resources, we can scale it without affecting the frontend or the database.
+
+- **Isolation:** Isolating configurations reduces the risk of errors. Changes to one service's configuration won't inadvertently affect another service.
+
+- **Reusability:** Separate YAML files can be reused across different environments (e.g., development, staging, production) with minimal changes.
+
+
+
+## Access the application
 - Frontend: [Yolo-app](http://a2cd55b4cfb6d46a2a7f253d8c7476d8-530763216.us-west-2.elb.amazonaws.com/)
 - Mongo Express: [Yolodb](http://aa9b277be2dd64233912349a23347468-1407590778.us-west-2.elb.amazonaws.com)
